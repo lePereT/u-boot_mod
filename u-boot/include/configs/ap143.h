@@ -73,6 +73,11 @@
 	#define CONFIG_QCA_GPIO_MASK_LED_ACT_L	GPIO4  | GPIO11 | GPIO12 |\
 						GPIO14 | GPIO15 | GPIO16
 
+#elif defined(CONFIG_FOR_QCA_AP143_8M)
+
+	#define CONFIG_QCA_GPIO_MASK_LED_ACT_L	GPIO4  | GPIO16 | GPIO15 |\
+						GPIO14 | GPIO11 | GPIO13
+
 #elif defined(CONFIG_FOR_TPLINK_MR22U_V1)
 
 	#define CONFIG_QCA_GPIO_MASK_LED_ACT_L	GPIO13
@@ -240,6 +245,12 @@
 				"rootfstype=squashfs init=/sbin/init "\
 				"mtdparts=spi0.0:256k(u-boot),64k(u-boot-env),14528k(rootfs),1472k(kernel),64k(art),16000k(firmware)"
 
+#elif defined(CONFIG_FOR_QCA_AP143_8M)
+
+	#define CONFIG_BOOTARGS	"console=ttyS0,115200 "\
+				"rootfstype=squashfs init=/sbin/init "\
+				"mtdparts=spi0.0:256k(u-boot)ro,64k(u-boot-env)ro,6144k(rootfs),1664k(kernel),64k(art)ro"
+
 #elif defined(CONFIG_FOR_TPLINK_MR22U_V1)    ||\
       defined(CONFIG_FOR_TPLINK_MR6400_V1V2) ||\
       defined(CONFIG_FOR_TPLINK_WR810N_V1)   ||\
@@ -323,6 +334,7 @@
 #elif defined(CONFIG_FOR_GLINET_GL_AR300M_LITE) ||\
       defined(CONFIG_FOR_P2W_CPE505N)           ||\
       defined(CONFIG_FOR_P2W_R602N)             ||\
+      defined(CONFIG_FOR_QCA_AP143_8M)          ||\
       defined(CONFIG_FOR_WALLYS_DR531)          ||\
       defined(CONFIG_FOR_YUNCORE_AP90Q)         ||\
       defined(CONFIG_FOR_YUNCORE_CPE830)        ||\
@@ -395,6 +407,7 @@
 
 #elif defined(CONFIG_FOR_GLINET_GL_AR300M_LITE) ||\
       defined(CONFIG_FOR_GLINET_GL_AR750)       ||\
+      defined(CONFIG_FOR_QCA_AP143_8M)          ||\
       defined(CONFIG_FOR_WHQX_E600G_V2)         ||\
       defined(CONFIG_FOR_WHQX_E600GAC_V2)
 
@@ -469,6 +482,12 @@
 	#define OFFSET_MAC_DATA_BLOCK		0x50000
 	#define OFFSET_MAC_DATA_BLOCK_LENGTH	0x10000
 	#define OFFSET_MAC_ADDRESS		0x00000
+
+#elif defined(CONFIG_FOR_QCA_AP143_8M)
+
+	#define OFFSET_MAC_DATA_BLOCK		0x7f0000
+	#define OFFSET_MAC_DATA_BLOCK_LENGTH	0x010000
+	#define OFFSET_MAC_ADDRESS		0x000000
 
 #elif defined(CONFIG_FOR_TPLINK_MR22U_V1)     ||\
       defined(CONFIG_FOR_TPLINK_MR3420_V3)    ||\
@@ -559,6 +578,10 @@
 
 	#define WEBFAILSAFE_UPLOAD_ART_ADDRESS	(CFG_FLASH_BASE + 0x50000)
 
+#elif defined(CONFIG_FOR_QCA_AP143_8M)
+
+	#define WEBFAILSAFE_UPLOAD_ART_ADDRESS	(CFG_FLASH_BASE + 0x7f0000)
+
 #elif defined(CONFIG_FOR_WHQX_E600G_V2) ||\
       defined(CONFIG_FOR_WHQX_E600GAC_V2)
 
@@ -577,6 +600,7 @@
       defined(CONFIG_FOR_COMFAST_CF_E530N)           ||\
       defined(CONFIG_FOR_GAINSTRONG_OOLITE_V5_2)     ||\
       defined(CONFIG_FOR_GAINSTRONG_OOLITE_V5_2_DEV) ||\
+      defined(CONFIG_FOR_QCA_AP143_8M)               ||\
       defined(CONFIG_FOR_TPLINK_MR22U_V1)            ||\
       defined(CONFIG_FOR_TPLINK_MR3420_V3)           ||\
       defined(CONFIG_FOR_TPLINK_MR6400_V1V2)         ||\
@@ -684,6 +708,11 @@
 
 	#define CONFIG_QCA_PLL_IN_FLASH_BLOCK_OFFSET	0x40000
 	#define CONFIG_QCA_PLL_IN_FLASH_BLOCK_SIZE	0x10000
+
+#elif defined(CONFIG_FOR_QCA_AP143_8M)
+
+	#define CONFIG_QCA_PLL_IN_FLASH_BLOCK_OFFSET	0x7F0000
+	#define CONFIG_QCA_PLL_IN_FLASH_BLOCK_SIZE	0x010000
 
 #elif defined(CONFIG_FOR_WALLYS_DR531)
 
